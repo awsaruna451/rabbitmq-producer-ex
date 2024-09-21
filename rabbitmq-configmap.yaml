@@ -1,0 +1,14 @@
+# rabbitmq-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: rabbitmq-config
+data:
+  rabbitmq.conf: |
+    cluster_formation.peer_discovery_backend  = k8s
+    cluster_formation.k8s.host = kubernetes.default.svc.cluster.local
+    cluster_formation.k8s.address_type = hostname
+    log.console = true
+    listeners.tcp.default = 5672
+    management.tcp.port = 15672
+    queue_master_locator = min-masters

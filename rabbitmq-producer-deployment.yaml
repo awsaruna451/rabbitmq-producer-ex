@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq-producer-ex
+  labels:
+    app: rabbitmq-producer-ex
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: rabbitmq-producer-ex
+  template:
+    metadata:
+      labels:
+        app: rabbitmq-producer-ex
+    spec:
+      containers:
+      - name: rabbitmq-producer-ex
+        image: aruna451/rabbitmq-producer-ex:v1.0
+        ports:
+        - containerPort: 9393
+
+
